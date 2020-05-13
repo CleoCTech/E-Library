@@ -152,192 +152,38 @@
                 <div class="col-md-4 d-md-flex"></div>
             </div>
         </div>
-
+        
+       
+            
+      
+        @if (count($recent_posts)>0)
         <div class="row">
            <div class="col-md-12">
                  <!-- Swiper -->
             <div class="swiper-container">
                 <div class="swiper-wrapper">
+                    @foreach ($recent_posts as $recent_post)
                     <div class="swiper-slide">
                         <div class="row shadow hover-animate hover-shadow">
                             <div class="col-md-6">
-                                <img src="https://images-na.ssl-images-amazon.com/images/I/51d2e%2B67u1L.jpg" class="img-fluid">
+                                {{-- <img src="https://images-na.ssl-images-amazon.com/images/I/51d2e%2B67u1L.jpg" class="img-fluid"> --}}
+                                <img style=""  src="/storage/cover_images/{{$recent_post->cover_image}}" class="img-fluid">
                             </div>
                             <div class="col-md-6 book-title">
                                 <h5>
-                                   Design Secret
+                                    {{$recent_post->title}}
                                 </h5>
-                                <p class="small text-muted" style="margin-bottom: 2rem">Cindy Elsharouni</p>
+                                <p class="small text-muted" style="margin-bottom: 2rem">{{ $recent_post->author }}</p>
                                 {{-- <div class="ico"> --}}
-                                    <a type="button" class="btn-floating btn-small">
+                                    <a type="button" class="btn-floating btn-small" onclick="window.location.href = '/storage/books/{{$recent_post->book_file}}';">
                                         <i class="fa fa-download fa-2x"></i>
                                     </a>
                                 {{-- </div> --}}
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="row shadow hover-animate hover-shadow">
-                            <div class="col-md-6">
-                                <img src="https://wp-media.patheos.com/blogs/sites/572/2019/01/Revised-Cover-313-x-500.jpg" class="img-fluid">
-                            </div>
-                            <div class="col-md-6 book-title">
-                                <h5>
-                                   The Bible Tells Me So
-                                </h5>
-                                <p class="small text-muted" style="margin-bottom: 2rem">Dave Armstrong</p>
-                                {{-- <div class="ico"> --}}
-                                    <a type="button" class="btn-floating btn-small">
-                                        <i class="fa fa-download fa-2x"></i>
-                                    </a>
-                                {{-- </div> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="row shadow hover-animate hover-shadow">
-                            <div class="col-md-6">
-                                <img src="https://haroldjfischeldotcom.files.wordpress.com/2016/02/bookcoverimaged-1600-width-313x500.jpg" class="img-fluid">
-                            </div>
-                            <div class="col-md-6 book-title">
-                                <h5>
-                                   Anthony
-                                </h5>
-                                <p class="small text-muted" style="margin-bottom: 2rem">Harold J. Fischel</p>
-                                {{-- <div class="ico"> --}}
-                                    <a type="button" class="btn-floating btn-small">
-                                        <i class="fa fa-download fa-2x"></i>
-                                    </a>
-                                {{-- </div> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="row shadow hover-animate hover-shadow">
-                            <div class="col-md-6">
-                                <img src="https://haroldjfischeldotcom.files.wordpress.com/2016/02/bookcoverimaged-1600-width-313x500.jpg" class="img-fluid">
-                            </div>
-                            <div class="col-md-6 book-title">
-                                <h5>
-                                   Anthony
-                                </h5>
-                                <p class="small text-muted" style="margin-bottom: 2rem">Harold J. Fischel</p>
-                                {{-- <div class="ico"> --}}
-                                    <a type="button" class="btn-floating btn-small">
-                                        <i class="fa fa-download fa-2x"></i>
-                                    </a>
-                                {{-- </div> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="row shadow hover-animate hover-shadow">
-                            <div class="col-md-6">
-                                <img src="https://ilona-andrews.com/wp-content/uploads/2019/06/SOB600-313x500.jpg" class="img-fluid">
-                            </div>
-                            <div class="col-md-6 book-title">
-                                <h5>
-                                   Sweep of the blade
-                                </h5>
-                                <p class="small text-muted">Ilona Andrews</p>
-                                {{-- <div class="ico"> --}}
-                                    <a type="button" class="btn-floating btn-small">
-                                        <i class="fa fa-download fa-2x"></i>
-                                    </a>
-                                {{-- </div> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="row shadow hover-animate hover-shadow">
-                            <div class="col-md-6">
-                                <img src="https://www.clarityunlimited.com/wp-content/uploads/2017/04/TURN7-COVER-FINAL-313x500-1.jpg" class="img-fluid">
-                            </div>
-                            <div class="col-md-6 book-title">
-                                <h5>
-                                   Turn
-                                </h5>
-                                <p class="small text-muted">Clara Chorley</p>
-                                {{-- <div class="ico"> --}}
-                                    <a type="button" class="btn-floating btn-small">
-                                        <i class="fa fa-download fa-2x"></i>
-                                    </a>
-                                {{-- </div> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="row shadow hover-animate hover-shadow">
-                            <div class="col-md-6">
-                                <img src="https://i2.wp.com/www.janicebroyles.com/wp-content/uploads/2019/10/TheSecretHeir-resized-313x500.png?resize=313%2C500" class="img-fluid">
-                            </div>
-                            <div class="col-md-6 book-title">
-                                <h5>
-                                   The Secret Heir
-                                </h5>
-                                <p class="small text-muted" >Janice Bronyles</p>
-                                {{-- <div class="ico"> --}}
-                                    <a type="button" class="btn-floating btn-small">
-                                        <i class="fa fa-download fa-2x"></i>
-                                    </a>
-                                {{-- </div> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="row shadow hover-animate hover-shadow">
-                            <div class="col-md-6">
-                                <img src="https://www.undergroundbookreviews.org/wp-content/uploads/2018/10/ABR-331-529-313x500.jpg" class="img-fluid">
-                            </div>
-                            <div class="col-md-6 book-title">
-                                <h5>
-                                   The Book of revelation
-                                </h5>
-                                <p class="small text-muted" style="">A. C Burch</p>
-                                {{-- <div class="ico"> --}}
-                                    <a type="button" class="btn-floating btn-small">
-                                        <i class="fa fa-download fa-2x"></i>
-                                    </a>
-                                {{-- </div> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="row shadow hover-animate hover-shadow">
-                            <div class="col-md-6">
-                                <img src="https://lh3.googleusercontent.com/proxy/q--Sj8Jo8VCkCzwXrToAHI2Xcd3zhtoiOdMriJmfMJwKSbFmhjxId4huaY0kcjOJSdLsXA2BXO3eFMndADv9aA-AeXGvJ26ifbDXZixXw1lDJM-_9l-Qr0z24e6Ing" class="img-fluid">
-                            </div>
-                            <div class="col-md-6 book-title">
-                                <h5>
-                                   Z-Minus
-                                </h5>
-                                <p class="small text-muted" style="">Perrin Briar</p>
-                                {{-- <div class="ico"> --}}
-                                    <a type="button" class="btn-floating btn-small">
-                                        <i class="fa fa-download fa-2x"></i>
-                                    </a>
-                                {{-- </div> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="row shadow hover-animate hover-shadow">
-                            <div class="col-md-6">
-                                <img src="https://i2.wp.com/www.janicebroyles.com/wp-content/uploads/2019/10/TheSecretHeir-resized-313x500.png?resize=313%2C500" class="img-fluid">
-                            </div>
-                            <div class="col-md-6 book-title">
-                                <h5>
-                                   Who told You?
-                                </h5>
-                                <p class="small text-muted" style="">Guy Right</p>
-                                {{-- <div class="ico"> --}}
-                                    <a type="button" class="btn-floating btn-small">
-                                        <i class="fa fa-download fa-2x"></i>
-                                    </a>
-                                {{-- </div> --}}
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
+                    
                 </div>
                 <!-- Add Pagination -->
                 <div class="swiper-pagination"></div>
@@ -346,7 +192,7 @@
 
         
         </div>
-
+        @endif 
        
     </div>
   </section>

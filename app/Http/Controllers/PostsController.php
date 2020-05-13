@@ -7,6 +7,7 @@ use App\Fuculty;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Post;
+use DB;
 class PostsController extends Controller
 {
     /**
@@ -16,8 +17,15 @@ class PostsController extends Controller
      */
     public function index()
     {   
+        $recent_posts = Post::orderBy('created_at', 'desc')->take(2)->get();
+        
+        $data = array(
+            'recent_posts' => $recent_posts
+        );
+        //return view('pages.index', compact('title'));
 
-        return view('pages.home');
+        return view('pages.home')->with($data);
+        // return view('pages.home');
     }
 
     /**
@@ -78,7 +86,7 @@ class PostsController extends Controller
             //filename to store
             $bookfileNameToStore = $bookfilename.'_'.time().'.'.$bookextension;
             //upload image
-            $path = $request->file('book_file')->storeAs('public/books/', $fileNameToStore);
+            $path = $request->file('book_file')->storeAs('public/books/', $bookfileNameToStore);
         }else{
             die("Please Upload the book");
         }
