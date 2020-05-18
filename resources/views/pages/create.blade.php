@@ -20,6 +20,7 @@
     <div class="form-group">
         <label for="sel1">Select Fuculty:</label>
         <select class="form-control" id="sel1" name="faculty">
+            <option value="0" disabled="true" selected="true">Faculty Name</option>
             @foreach ($items2 as $item)
             <option value="{{ $item->id }}">{{ $item->fuculty_name }}</option>
             @endforeach
@@ -29,20 +30,19 @@
 
     {{-- {!! Form::select('items', $items, null, ) !!} --}}
     @endif
-    @if (count($items)>0)
+   
 
-    <div class="form-group">
+    <div class="form-group department">
         <label for="sel1">Select Department:</label>
-        <select class="form-control" id="sel1" name="department">
-            @foreach ($items as $item)
-            <option value="{{ $item->id }}">{{ $item->dept_name }}</option>
-            @endforeach
-
+        <select class="form-control department" id="sel2" name="department">
+            <option value="0" disabled="true" selected="true">Department Name</option>
+            {{-- <option value="{{ $item->id }}">{{ $item->dept_name }}</option> --}}
+            
         </select>
     </div>
 
     {{-- {!! Form::select('items', $items, null, ) !!} --}}
-    @endif
+
 
     <div class="form-group">
         {{Form::label('coverimage','Cover Image')}}
@@ -63,3 +63,55 @@
         color: #2d88cf;
     }
 </style>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> 
+<script type="text/javascript">
+
+$(document).ready(function () {
+  //your code here
+  $('#sel1').on('change', function(){
+       // console.log("changed");
+
+        var fuculty_id =$(this).val();
+       // console.log(fuculty_id);
+        var div=$(this).parent();
+
+        var op=" ";
+
+        //ajax
+        $.ajax({
+            type: "get",
+            url:"{!!URL::to('findDepartments')!!}",
+            data:{'id':fuculty_id},
+            success:function(data){
+					//console.log('success');
+
+					console.log(data);
+
+					//console.log(data.length);
+					op+='<option value="0" selected disabled>Choose Department</option>';
+					for(var i=0;i<data.length;i++){
+					    op+='<option value="'+data[i].id+'">'+data[i].dept_name+'</option>';
+                    } 
+                    $('#sel2').html(" ");
+                    $('#sel2').append(op);
+
+				//    div.find('#sel2').html(" ");
+				//    div.find('#sel2').append(op);
+                // $.each(data, function(index) {
+                //     $('#sel2').html(" ");
+                //     $('#sel2').append($('<option>', { value : data[index].id}).text(data[index].dept_name));
+                // });
+
+				},
+
+            error:function(){
+                
+            }
+        });
+
+     });
+});
+</script>

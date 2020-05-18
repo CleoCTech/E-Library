@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Department;
+use App\Fuculty;
+use Illuminate\Auth\Access\Response;
 use Illuminate\Http\Request;
 
 class DepartmentsController extends Controller
@@ -11,9 +14,17 @@ class DepartmentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function findDepartments(Request $request)
     {
-        //
+        // $fuculty_id =$request()->id;
+
+        // $depts = Department::where('fuculty_id', '=', $fuculty_id)->get();
+        // return response()->json($depts);
+
+        $data=Department::select('dept_name','id')->where('fuculty_id',$request->id)->get();
+        return response()->json($data);//then sent this data to ajax success
+
+        
     }
 
     /**
@@ -34,7 +45,8 @@ class DepartmentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        // $deps = $request->fuculty()->id;
     }
 
     /**

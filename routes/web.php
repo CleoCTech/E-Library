@@ -29,7 +29,13 @@ Route::get('/arts', 'PagesController@arts');
 Route::get('/business', 'PagesController@business');
 
 Route::get('/education', 'PagesController@education');
+Route::get('/findDepartments', 'DepartmentsController@findDepartments');
 
 Route::resource('posts', 'PostsController');
 Route::resource('fuculties', 'FucultiesContoller');
 Route::resource('departments', 'DepartmentsController');
+
+
+// Route::get('/departments', function () {
+//     $faculty_id =Input::get('fuculty_id');
+// });

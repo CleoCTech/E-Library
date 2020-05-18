@@ -10,8 +10,9 @@
     <title>{{ config('app.name', 'E-Library') }}</title>
 
     <!-- Scripts -->
+    
     {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
-
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -96,13 +97,10 @@
     
   
     {{-- <script src="https://js.pusher.com/5.0/pusher.min.js"></script> --}}
+    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
     {{-- <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script> --}}
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js""></script>
-    <script>
-        CKEDITOR.replace( 'article-ckeditor' );
-    </script>
 
     <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
     <!-- Initialize Swiper -->
