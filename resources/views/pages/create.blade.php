@@ -30,14 +30,14 @@
 
     {{-- {!! Form::select('items', $items, null, ) !!} --}}
     @endif
-   
+
 
     <div class="form-group department">
         <label for="sel1">Select Department:</label>
         <select class="form-control department" id="sel2" name="department">
             <option value="0" disabled="true" selected="true">Department Name</option>
             {{-- <option value="{{ $item->id }}">{{ $item->dept_name }}</option> --}}
-            
+
         </select>
     </div>
 
@@ -66,10 +66,9 @@
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> 
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
-
-$(document).ready(function () {
+    $(document).ready(function () {
   //your code here
   $('#sel1').on('change', function(){
        // console.log("changed");
@@ -97,14 +96,6 @@ $(document).ready(function () {
                     } 
                     $('#sel2').html(" ");
                     $('#sel2').append(op);
-
-				//    div.find('#sel2').html(" ");
-				//    div.find('#sel2').append(op);
-                // $.each(data, function(index) {
-                //     $('#sel2').html(" ");
-                //     $('#sel2').append($('<option>', { value : data[index].id}).text(data[index].dept_name));
-                // });
-
 				},
 
             error:function(){
