@@ -60,6 +60,22 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                  @if (Auth::user()->is_admin == 1 && Auth::user()->role == "Admin")
+                                    <a class="dropdown-item" href="{{ url('/admin') }}">
+                                      {{ __('Admin-Dashboard') }}
+                                    </a>
+                                  @endif
+                                  @if (Auth::user()->is_admin == 1 && Auth::user()->role == "Lecturer")
+                                    <a class="dropdown-item" href="{{ url('/dashboard') }}">
+                                      {{ __('Dashboard') }}
+                                    </a>
+                                  @endif
+                                  @if (Auth::user()->is_admin == 0 )
+                                    <a class="dropdown-item" href="{{ url('/profile') }}">
+                                      {{ __('Profile') }}
+                                    </a>
+                                  @endif
+                                  
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

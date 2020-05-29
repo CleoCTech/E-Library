@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -25,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/login-redirect';
 
     /**
      * Create a new controller instance.
@@ -36,4 +37,27 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function loginRedirect(){
+        // dd("uii4");
+         if(Auth::user()->is_admin == 1){
+             //dd("yes admin");
+             if(Auth::user()->role == "Admin"){
+                 //dd("yes admin2");
+                 return redirect("/admin/users");
+             }
+             else if(Auth::user()->role == "Lecturer"){
+                 return redirect("/dashboard");
+             }
+             else if(Auth::user()->role == "Editor"){
+                 return redirect("/");
+             }
+             else if(Auth::user()->role == "Student"){
+                 return redirect("/");
+             }
+         }else{
+             //dd("uii");
+             return redirect("/");
+         }
+     }
 }

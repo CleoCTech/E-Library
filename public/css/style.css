@@ -41,9 +41,13 @@
     }
     
     .nav-link {
-        color: rgb(94, 108, 132)! important;
+        color: rgb(94, 108, 132);
         font-size: 16px;
         font-weight: bold;
+    }
+    
+    .tabs {
+        color: #3490DC !important;
     }
     
     .navbar-nav .nav-item:nth-child(2) .nav-link {

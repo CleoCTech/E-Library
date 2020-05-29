@@ -22,7 +22,7 @@
     </div> --}}
 
         <div class="search-bar mt-5 p-3 p-lg-1 pl-lg-4">
-            <form action="/search-results" method="GET">
+            <form >
                 <div class="row">
                     <div class="col-lg-4 d-flex align-items-center form-group">
                         <input type="text" name="search" placeholder="What are you searching for?"
@@ -213,7 +213,7 @@
                                     </div>
                                     <div class="col-md-6 book-title">
                                         <h5>
-                                            {{$recent_post->title}}
+                                            {{$recent_post->tittle}}
                                         </h5>
                                         <p class="small text-muted" style="margin-bottom: 2rem">
                                             {{ $recent_post->author }}</p>

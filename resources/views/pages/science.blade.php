@@ -163,7 +163,7 @@
          $('.dept').on('click', function () {
              dept_name =$(this).text();
             dept_id =$(this).attr("id");
-             console.log(dept_id);
+             //console.log(dept_id);
              $(".filter-option-inner-inner").html(" ");
              $(".filter-option-inner-inner").text(dept_name);
             
@@ -172,7 +172,7 @@
             //var dept_name =$(this).text();
            // console.log(dept_name);
            
-            window.location = "/search-results/"+dept_id+"/"+dept_name.replace(" ","-");
+            window.location = "/search-results/"+dept_id+"/"+dept_name.toLowerCase().replace(" ","-").replace(" & ", "-");
          });
 
         

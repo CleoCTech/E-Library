@@ -5,7 +5,7 @@
 <main role="main" class="flex-shrink-0">
     <div class="container">
         <div class="search-bar mt-5 p-3 p-lg-1 pl-lg-4">
-            <form action="#">
+            <form>
                 <div class="row">
                     <div class="col-lg-4 d-flex align-items-center form-group">
                         <input type="text" name="search" placeholder="What are you searching for?"
@@ -44,7 +44,7 @@
                                     <ul class="dropdown-menu inner show" role="presentation"
                                         style="margin-top: 0px; margin-bottom: 0px;">
                                         @foreach ($departments as $department)
-                                        <li class="dept">
+                                        <li id="{{$department->id}}" class="dept">
                                             <a role="option" class="dropdown-item" id="bs-select-1-3"
                                                 tabindex="0">
                                                 <span class="text">{{$department->dept_name}}</span>
@@ -62,7 +62,7 @@
                         </div>
                     </div>
                     <div class="col-lg-2">
-                        <button type="submit" class="btn btn-primary btn-block rounded-xl h-100">Search </button>
+                        <button id="search_data" type="button" class="btn btn-primary btn-block rounded-xl h-100" value="{{ request()->input('query') }}">Search</button>
                     </div>
                 </div>
             </form>
@@ -161,14 +161,24 @@
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-         
+        var dept_name;
+        var  dept_id ;
          $('.dept').on('click', function () {
-            var n =$(this).text();
-            //alert(n);
+             dept_name =$(this).text();
+            dept_id =$(this).attr("id");
+             //console.log(dept_id);
              $(".filter-option-inner-inner").html(" ");
-             $(".filter-option-inner-inner").text(n);
-
+             $(".filter-option-inner-inner").text(dept_name);
+            
          });
+         $('#search_data').on('click', function () {
+            //var dept_name =$(this).text();
+           // console.log(dept_name);
+           
+            window.location = "/search-results/"+dept_id+"/"+dept_name.toLowerCase().replace(" ","-");
+         });
+
         
+
     });
 </script>

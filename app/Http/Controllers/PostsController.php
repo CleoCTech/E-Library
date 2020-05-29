@@ -4,12 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Department;
 use App\Fuculty;
+use App\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Post;
 use DB;
 class PostsController extends Controller
 {
+
+    /**nn
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        // $this->middleware('auth',['except'=>['index','show']]);
+        $this->middleware('auth');
+        // $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
