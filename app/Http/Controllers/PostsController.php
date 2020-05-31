@@ -68,7 +68,7 @@ class PostsController extends Controller
             'author' => 'required',
             'cover_image'=>'image|nullable|max:1999',
             // 'book_file'=>'required|application/msword|text/pdf'
-            'book_file'=>'mimes:pdf' 
+            'book_file'=>'mimes:pdf|max:99999' 
         ]);
         
         //Handle cover_image file upload
@@ -140,6 +140,20 @@ class PostsController extends Controller
     public function edit($id)
     {
         //
+        //$items = Department::all('id','dept_name');
+        $items2 = Fuculty::all('id', 'fuculty_name');
+        
+        $post= Post::find($id);
+
+        //check for coreect user
+        if(auth()->user()->id !==$post->user_id){
+             return redirect('posts')->with('error', 'Unauthorized page');
+        }
+        $data = array(
+            'post' => $post,
+            'items2' => $items2
+        );
+         return view('pages.edit-post')->with($data);
     }
 
     /**
@@ -152,6 +166,59 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request, [
+            'title' => 'required',
+            'author' => 'required',
+           // 'cover_image'=>'image|nullable|max:1999',
+            // 'book_file'=>'required|application/msword|text/pdf'
+           // 'book_file'=>'mimes:pdf' 
+        ]);
+
+        if($request->hasFile('cover_image')){
+            //get filename with extension
+            $filenameWithExt =$request->file('cover_image')->getClientOriginalName();
+            //get just filenaem
+            $filename = pathinfo($filenameWithExt,PATHINFO_FILENAME);
+            //get just Ext
+            $extension =$request->file('cover_image')->getClientOriginalExtension();
+            //filename to store
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            //upload image
+            $path = $request->file('cover_image')->storeAs('public/cover_images/', $fileNameToStore);
+        }
+
+        //Handle book_file file upload
+        //if function to check if the user has uploaded the file
+        if($request->hasFile('book_file')){
+            //get filename with extension
+            $bookfilenameWithExt =$request->file('book_file')->getClientOriginalName();
+            //get just filenaem
+            $bookfilename = pathinfo($bookfilenameWithExt,PATHINFO_FILENAME);
+            //get just Ext
+            $bookextension =$request->file('book_file')->getClientOriginalExtension();
+            //filename to store
+            $bookfileNameToStore = $bookfilename.'_'.time().'.'.$bookextension;
+            //upload image
+            $path = $request->file('book_file')->storeAs('public/books/', $bookfileNameToStore);
+        }
+
+        
+        $post = Post::find($id);
+        $post ->tittle =$request->input('title');
+        $post ->author =$request->input('author');
+        $post->user_id=auth()->user()->id; 
+        $post->fuculty_id=$request->faculty;
+        $post->dept_id=$request->department;
+       // $post->cover_image =$fileNameToStore;
+       // $post->book_file =$bookfileNameToStore;
+        if($request->hasFile('cover_image')){
+            $post->cover_image =$fileNameToStore;
+        }
+        if($request->hasFile('book_file')){
+            $post->book_file =$bookfileNameToStore;
+        }
+        $post->save();
+        return redirect('admin')->with('success','Post Updated');
     }
 
     /**

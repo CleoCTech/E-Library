@@ -42,8 +42,8 @@ Route::prefix('admin')->group(function(){
 	Route::get('/', 'AdminController@index');
 	Route::get('/users', 'AdminController@users');
 	Route::get('/roles', 'AdminController@roles');
-	Route::get('/create', 'AdminController@create');
-	 Route::get('/destroy{id}', 'AdminController@destroy1');
+	Route::get('/create', 'AdminController@create')->name("create-user");
+	Route::get('/destroy/{id}', 'AdminController@destroy1')->name('delete');
 });
 Route::resource('posts', 'PostsController');
 Route::resource('admin', 'AdminController');

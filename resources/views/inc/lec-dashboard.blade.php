@@ -7,6 +7,16 @@
 
     <section class="py-6">
         <h2>Dashboard</h2>
+        <div class="row">
+            <div class="col-lg-12 margin-tb">
+                <div class="pull-left">
+                    <a class="btn btn-success" href="posts/create">Create New Post</a>
+                </div>
+                {{-- <div class="pull-right">
+                    <a class="btn btn-success" href="posts/create">Create New Post</a>
+                </div> --}}
+            </div>
+        </div>
         <div class="container">
             @if (count($posts)>0)
             @foreach ($posts as $post)
@@ -68,5 +78,15 @@
     .img-fluid {
         
         height: 100% !important;
+    }
+    .btn-danger{
+        margin-right: 6.5rem;
+    }
+    .btn-info{
+        padding-right: 1.7rem !important;
+
+    }
+    .pull-left {
+        padding-left: 1rem;
     }
 </style>

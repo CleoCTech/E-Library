@@ -19,4 +19,7 @@ class Post extends Model
     public function department(){
         return $this->belongsTo('App\Department','dept_id','id');
     }
+    public function facaulty(){
+        return $this->belongsTo('App\Fuculty','fuculty_id','id');
+    }
 }
