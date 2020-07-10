@@ -24,6 +24,8 @@ Run the database migrations (Set the database connection in .env before migratin
 
     php artisan migrate
 Or you can import the db once you create the database name and ignore the migration command
+    
+    db name: e_library
 
 Create a symlink to the public folder
 
