@@ -19,13 +19,15 @@ Copy the example env file and make the required configuration changes in the .en
 Generate a new application key
 
     php artisan key:generate
-Generate a new JWT authentication secret key
-
 
 Run the database migrations (Set the database connection in .env before migrating)
 
     php artisan migrate
-Or yopu can import the db once you create the database name and ignore the migration command
+Or you can import the db once you create the database name and ignore the migration command
+
+Create a symlink to the public folder
+
+    php artisan storage:link
 
 Start the local development server
 
