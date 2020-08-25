@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Department;
+use App\Activities;
+use App\Notification;
 use App\Fuculty;
 use App\User;
 use Illuminate\Support\Facades\Storage;
@@ -20,7 +22,7 @@ class PostsController extends Controller
     public function __construct()
     {
         // $this->middleware('auth',['except'=>['index','show']]);
-        $this->middleware('auth');
+      //  $this->middleware('auth');
         // $this->middleware('admin');
     }
     /**
@@ -108,6 +110,10 @@ class PostsController extends Controller
 
         //create post
 
+        $deptname = Department::select('dept_name')
+        ->where('id', $request->department)
+        ->first();
+
         $post = new Post;
         $post ->tittle =$request->input('title');
         $post ->author =$request->input('author');
@@ -117,7 +123,60 @@ class PostsController extends Controller
         $post->cover_image =$fileNameToStore;
         $post->book_file =$bookfileNameToStore;
         $post->save();
+
+        /**notify targeted users**/
+        //get the targeted users->users who have simillar download history from activities table
+        $targetedUsers = Activities::select('user_id')
+        ->where('dept_id', $request->department)
+        ->get();
+
+         //update notifications
+        foreach ($targetedUsers as $targetedUser) {
+
+            if ($targetedUser !=null) {
+
+                $notification = new Notification;
+                $notification->dept_name =$deptname->dept_name;
+                $notification->message = "New time from ".' '.$deptname->dept_name." department has been uploaded.";
+                $notification->user_id=$targetedUser->user_id;
+                $notification->save();
+            }elseif($targetedUser ==null){
+                $allstudents =User::select('id')
+                ->where('role', 'Student')
+                ->get();
+
+                foreach ($allstudents as $allstudent) {
+                    $notification = new Notification;
+                    $notification->dept_name =$deptname->dept_name;
+                    $notification->message = "New time from ".' '.$deptname->dept_name." department has been uploaded. Unsubscibe from this if you don't need notifications from this department";
+                    $notification->user_id=$allstudent->id;
+                    $notification->save();
+                }
+            }
+        }
+
+
+
         return redirect('posts')->with('success','Post Created');
+    }
+    public function testss(){
+          /**notify targeted users**/
+        //get the targeted users->users who have simillar download history from activities table
+    //     $targetedActivities = Activities::select('activity_id')
+    //     ->where('activity_name', 'Download')
+    //     ->get();
+    //    // return $targetedActivities;
+        // return "Found";
+    //     foreach ($targetedActivities as $targetedActivity) {
+    //         if ($targetedActivity !=null) {
+
+    //         }
+    //     }
+        $deptname = Department::select('dept_name')
+        ->where('id',1)
+        ->first();
+
+        return $deptname->dept_name;
     }
 
     /**
@@ -230,5 +289,6 @@ class PostsController extends Controller
     public function destroy($id)
     {
         //
-    }
+
+   }
 }

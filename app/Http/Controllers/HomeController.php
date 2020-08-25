@@ -45,38 +45,24 @@ class HomeController extends Controller
 
     public function saveActivities(Request $request){
 
-        $data=Post::select('book_file')
+        $data=Post::select('dept_id','book_file')
         ->where('id',$request->id)
         ->get();
 
 
         foreach ($data as $book) {
+            $dept_id =$book->dept_id;
             $file_name= $book->book_file;
         }
-       // return response()->json($file_name);
+        // return response()->json($file_name);
         //save
         $activity = new Activities;
         $activity->activity_name = "Download";
         $activity->activity_id = $request->id;
         $activity->actual_act = $file_name;
+        $activity->dept_id = $dept_id;
         $activity->user_id =auth()->user()->id;
         $activity->save();
 
-        // try {
-
-        //     $activity = new Activities;
-        //     $activity->activity_name = "Download";
-        //     $activity->activity_id = $request->id;
-        //     $activity->actual_act = $data['book_file'];
-        //     $activity->user_id =auth()->user()->id;
-        //     $activity->save();
-
-        //   } catch (\Exception $e) {
-
-        //       return $e->getMessage();
-
-        //   }
-
-        //return response()->json($data);
     }
 }

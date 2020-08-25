@@ -26,7 +26,7 @@ Route::get('/agriculture', 'PagesController@agriculture');
 Route::get('/science', 'PagesController@science');
 
 Route::get('/arts', 'PagesController@arts');
-
+Route::get('/actitivity_test', 'PostsController@testss');
 Route::get('/business', 'PagesController@business');
 Route::get('/profile', 'PagesController@profile');
 Route::get('/user-notification', 'PagesController@notifications');
