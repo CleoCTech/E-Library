@@ -16,7 +16,7 @@ class DepartmentsController extends Controller
      */
     public function findDepartments(Request $request)
     {
-        // $fuculty_id =$request()->id;
+        // $fuculty_id =$request()->id; nn
 
         // $depts = Department::where('fuculty_id', '=', $fuculty_id)->get();
         // return response()->json($depts);
@@ -24,7 +24,7 @@ class DepartmentsController extends Controller
         $data=Department::select('dept_name','id')->where('fuculty_id',$request->id)->get();
         return response()->json($data);//then sent this data to ajax success
 
-        
+
     }
 
     /**
@@ -45,7 +45,7 @@ class DepartmentsController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         // $deps = $request->fuculty()->id;
     }
 

@@ -1,0 +1,273 @@
+body{
+    margin: 0;
+    font-family: Jost;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #111;
+    text-align: left;
+    background-color: #fff;
+}
+
+.pb-12, .py-12 {
+    padding-bottom: 6rem!important;
+}
+
+.pt-7, .py-7 {
+    padding-top: 2rem!important;
+}
+
+.mb-10, .my-10 {
+    margin-bottom: 4rem!important;
+}
+
+.h3, h3 {
+    font-size: 2rem;
+}
+
+.list-group-flush-x .list-group-item {
+    padding-left: 0;
+    padding-right: 0;
+    border-left: none;
+    border-right: none;
+}
+
+.list-group-sm .list-group-item {
+    padding: 1.25rem 1.25rem;
+}
+
+.list-group-item {
+    background-color: transparent;
+    border: 1px solid #e5e5e5;
+}
+
+.list-group-item-action {
+    color: #767676;
+}
+
+a {
+    transition: all .1s ease-in-out;
+    transition-property: color;
+}
+
+.list-group-strong .list-group-item.active {
+    font-weight: 500;
+}
+
+.list-group-item+.list-group-item.active {
+    margin-top: -1px;
+    border-top-width: 1px;
+}
+
+.list-group-item.active {
+    z-index: 2;
+    color: #111;
+    background-color: transparent;
+    border-color: #e5e5e5;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    background-clip: border-box;
+    transition: all .1s ease-in-out;
+    transition-property: border;
+}
+
+.form-control-sm {
+    height: calc(1.5em + 1.625rem + 2px);
+    padding: .8125rem 1.25rem;
+    font-size: .9375rem;
+    line-height: 1.5;
+}
+
+.form-control{
+    color: #111;
+    background-color: #fff;
+    border-radius: 0;
+}
+
+.btn-dark {
+    color: #fff;
+    background-color: #1f1f1f;
+    border-color: #1f1f1f;
+}
+
+.btn {
+    height: calc(1.5rem + 1.75rem + 2px);
+    white-space: nowrap;
+}
+
+.btn {
+    padding: .875rem 1.75rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    border-radius: 0;
+}
+
+.form-row {
+    margin-right: -10px;
+    margin-left: -10px;
+}
+
+.form-row>.col, .form-row>[class*=col-] {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.custom-select-sm {
+    height: calc(1.5em + 1.625rem + 2px);
+    padding-top: .8125rem;
+    padding-bottom: .8125rem;
+    padding-left: 1.25rem;
+    font-size: .9375rem;
+}
+
+.custom-select{
+    padding: .375rem 1.75rem .375rem .75rem;
+    color: #111;
+    border: 1px solid #e5e5e5;
+    border-radius: 0;
+}
+
+.custom-select:focus {
+    border-color: #1f1f1f;
+    outline: 0;
+    box-shadow: 0 0 0 0 transparent;
+}
+
+.btn-outline-border.active {
+    border-color: #1f1f1f;
+}
+
+.btn-outline-border:focus, .btn-outline-border:hover {
+    background-color: #fff;
+    border-color: #1f1f1f;
+    color: #111;
+}
+
+.mb-7, .my-7 {
+    margin-bottom: 2rem!important;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(17,17,17,.125);
+}
+
+.card-img {
+    position: relative;
+}
+
+.btn-circle.btn-xs {
+    width: calc(1.40625rem + 1rem + 2px);
+}
+
+.card-action-right {
+    right: 1.25rem;
+}
+.card-action {
+    position: absolute;
+    top: 1.25rem;
+    z-index: 1;
+}
+
+.btn-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-radius: 50%;
+}
+
+.btn-white-primary {
+    background-color: #fff;
+    color: #111;
+}
+.btn-xs {
+    height: calc(1.40625rem + 1rem + 2px);
+    padding: .5rem .75rem;
+    font-size: .9375rem;
+}
+
+.card-btn {
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+}
+
+.card-img, .card-img-bottom, .card-img-top {
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.card-img:hover .card-btn {
+    opacity: 1;
+}
+
+.text-body {
+    color: #111!important;
+}
+
+.font-weight-bold {
+    font-weight: 500!important;
+}
+
+.text-muted {
+    color: #767676!important;
+}
+
+.card-badge-left {
+    left: 0;
+}
+.card-badge {
+    position: absolute;
+    top: 1.25rem;
+    z-index: 1;
+    border-radius: 0;
+}
+.badge {
+    letter-spacing: .02em;
+}
+.text-uppercase {
+    text-transform: uppercase!important;
+}
+.badge-dark {
+    color: #fff;
+    background-color: #1f1f1f;
+}
+
+.badge {
+    padding: .5em 1em;
+    font-size: .6875em;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.avatar {
+    position: relative;
+    color: #fff;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    vertical-align: middle;
+    font-size: 1rem;
+    font-weight: 600;
+    height: 3.125rem;
+    width: 3.125rem;
+}

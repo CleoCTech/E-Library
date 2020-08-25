@@ -29,9 +29,9 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $recent_posts = Post::orderBy('created_at', 'desc')->take(2)->get();
-        
+
         $data = array(
             'recent_posts' => $recent_posts
         );
@@ -42,7 +42,7 @@ class PostsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource. dept_name 
+     * Show the form for creating a new resource. dept_name
      *
      * @return \Illuminate\Http\Response
      */
@@ -60,7 +60,7 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-   
+
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -68,9 +68,9 @@ class PostsController extends Controller
             'author' => 'required',
             'cover_image'=>'image|nullable|max:1999',
             // 'book_file'=>'required|application/msword|text/pdf'
-            'book_file'=>'mimes:pdf|max:99999' 
+            'book_file'=>'mimes:pdf|max:99999'
         ]);
-        
+
         //Handle cover_image file upload
         //if function to check if the user has uploaded the file
         if($request->hasFile('cover_image')){
@@ -111,7 +111,7 @@ class PostsController extends Controller
         $post = new Post;
         $post ->tittle =$request->input('title');
         $post ->author =$request->input('author');
-        $post->user_id=auth()->user()->id; 
+        $post->user_id=auth()->user()->id;
         $post->fuculty_id=$request->faculty;
         $post->dept_id=$request->department;
         $post->cover_image =$fileNameToStore;
@@ -142,7 +142,7 @@ class PostsController extends Controller
         //
         //$items = Department::all('id','dept_name');
         $items2 = Fuculty::all('id', 'fuculty_name');
-        
+
         $post= Post::find($id);
 
         //check for coreect user
@@ -171,7 +171,7 @@ class PostsController extends Controller
             'author' => 'required',
            // 'cover_image'=>'image|nullable|max:1999',
             // 'book_file'=>'required|application/msword|text/pdf'
-           // 'book_file'=>'mimes:pdf' 
+           // 'book_file'=>'mimes:pdf'
         ]);
 
         if($request->hasFile('cover_image')){
@@ -202,11 +202,11 @@ class PostsController extends Controller
             $path = $request->file('book_file')->storeAs('public/books/', $bookfileNameToStore);
         }
 
-        
+
         $post = Post::find($id);
         $post ->tittle =$request->input('title');
         $post ->author =$request->input('author');
-        $post->user_id=auth()->user()->id; 
+        $post->user_id=auth()->user()->id;
         $post->fuculty_id=$request->faculty;
         $post->dept_id=$request->department;
        // $post->cover_image =$fileNameToStore;

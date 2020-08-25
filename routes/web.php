@@ -19,6 +19,7 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index');
+Route::get('/saveActivities', 'HomeController@saveActivities');
 //Route::get('/home', 'PagesController@home');
 Route::get('/agriculture', 'PagesController@agriculture');
 
@@ -28,6 +29,9 @@ Route::get('/arts', 'PagesController@arts');
 
 Route::get('/business', 'PagesController@business');
 Route::get('/profile', 'PagesController@profile');
+Route::get('/user-notification', 'PagesController@notifications');
+Route::get('/recent-activities', 'PagesController@actvities');
+
 Route::get('/search-results/{id}/{name}', 'PagesController@search');
 
 Route::get('/education', 'PagesController@education');
@@ -38,7 +42,7 @@ Route::prefix('admin')->group(function(){
 	// Route::get('/login', 'AdminLoginController@showLoginform')->name('admin.login');
 	// Route::post('/login', 'AdminLoginController@login')->name('admin.login.submit');
 	 //Route::get('/', 'AdminController@index')->name('admin.dashboard');
-	// Route::get('/logout', 'AdminLoginController@logout')->name('admin.logout'); 
+	// Route::get('/logout', 'AdminLoginController@logout')->name('admin.logout');
 	Route::get('/', 'AdminController@index');
 	Route::get('/users', 'AdminController@users');
 	Route::get('/roles', 'AdminController@roles');

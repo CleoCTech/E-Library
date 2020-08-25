@@ -22,7 +22,7 @@
     </div> --}}
 
         <div class="search-bar mt-5 p-3 p-lg-1 pl-lg-4">
-            <form >
+            <form>
                 <div class="row">
                     <div class="col-lg-4 d-flex align-items-center form-group">
                         <input type="text" name="search" placeholder="What are you searching for?"
@@ -208,8 +208,8 @@
                                 <div class="row shadow hover-animate hover-shadow">
                                     <div class="col-md-6">
                                         {{-- <img src="https://images-na.ssl-images-amazon.com/images/I/51d2e%2B67u1L.jpg" class="img-fluid"> --}}
-                                        <img style="" src="/storage/cover_images/{{$recent_post->cover_image}}"
-                                            class="img-fluid">
+                                        <img style="max-height: 218px; max-width: 153px;"
+                                            src="/storage/cover_images/{{$recent_post->cover_image}}" class="img-fluid">
                                     </div>
                                     <div class="col-md-6 book-title">
                                         <h5>
@@ -218,10 +218,17 @@
                                         <p class="small text-muted" style="margin-bottom: 2rem">
                                             {{ $recent_post->author }}</p>
                                         {{-- <div class="ico"> --}}
-                                        <a type="button" class="btn-floating btn-small"
-                                            onclick="window.location.href = '/storage/books/{{$recent_post->book_file}}';">
+                                        <a id="download" data-id="{{$recent_post->id}}" data-book="{{$recent_post->book_file}}" value="{{$recent_post->book_file}}" type="button"
+                                            class="btn-floating btn-small">
                                             <i class="fa fa-download fa-2x"></i>
                                         </a>
+                                        {{--  <a id="download" data-id="{{$recent_post->id}}" data-book="{{$recent_post->book_file}}" value="{{$recent_post->book_file}}" type="button"
+                                            class="CV btn-floating btn-small"
+                                            onclick="
+                                            alert('hey');
+                                            window.location.href = '/storage/books/{{$recent_post->book_file}}';">
+                                            <i class="fa fa-download fa-2x"></i>
+                                        </a>  --}}
                                         {{-- </div> --}}
                                     </div>
                                 </div>
@@ -245,3 +252,38 @@
 </main>
 
 @endsection
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //your code here
+        $(".btn-floating").on("click", function() {
+
+           // alert("Hey");
+            $targetFile = $(this).attr('data-book');
+            window.location.href = "/storage/books/" + $targetFile;
+
+            var targetID = $(this).attr('data-id');
+
+           // var bookname = button.getAttribute('data-book');
+           // console.log($targetID);
+
+            $.ajax({
+                type: "get",
+                url:"{!!URL::to('saveActivities')!!}",
+                data:{'id':targetID},
+                success:function(file_name){
+                        //console.log("success");
+                        //console.log(file_name);
+                    },
+
+                error:function(){
+
+                }
+            });
+        });
+    });
+</script>

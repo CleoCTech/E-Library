@@ -23,6 +23,16 @@ class PagesController extends Controller
     {
         return view("pages.profile");
     }
+    public function notifications()
+    {
+
+        
+        return view("pages.user-notifications");
+    }
+    public function actvities()
+    {
+        return view("pages.recent-activities");
+    }
 
     public function agriculture()
     {
